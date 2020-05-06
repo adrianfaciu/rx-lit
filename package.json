@@ -1,0 +1,23 @@
+{
+  "name": "rx-lit",
+  "version": "1.0.0",
+  "description": "Utilities to make working with Observables inside LitElement components a bit easier.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Faciu (adrian.faciu@gmail.com)",
+  "license": "MIT",
+  "repository": {
+    "url": "git@github.com:adrianfaciu/rx-lit.git"
+  },
+  "devDependencies": {
+    "lit-element": "^2.3.1",
+    "rxjs": "^6.5.5"
+  },
+  "peerDependencies": {
+    "lit-element": "2.x",
+    "rxjs": "6.x"
+  }
+}
