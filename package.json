@@ -4,8 +4,8 @@
   "description": "Utilities to make working with Observables inside LitElement components a bit easier.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf dist && tsc",
+    "publish": "yarn publish"
   },
   "author": "Adrian Faciu (adrian.faciu@gmail.com)",
   "license": "MIT",
@@ -14,7 +14,9 @@
   },
   "devDependencies": {
     "lit-element": "^2.3.1",
-    "rxjs": "^6.5.5"
+    "rimraf": "^3.0.2",
+    "rxjs": "^6.5.5",
+    "typescript": "^3.8.3"
   },
   "peerDependencies": {
     "lit-element": "2.x",
