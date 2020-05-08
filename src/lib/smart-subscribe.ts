@@ -22,11 +22,9 @@ interface WithUnsubscribe {
   [UNSUBSCRIBE_NAME]?: Subject<void>;
 }
 
-// TODO: Infer return type
-// TODO: Refactor?
 function getUnsubscribeStream<T extends LitElement & WithUnsubscribe>(
   element: T
-): Subject<void> {
+) {
   const unsubscribe$ = element[UNSUBSCRIBE_NAME] || new Subject<void>();
 
   if (!element[UNSUBSCRIBE_NAME]) {
