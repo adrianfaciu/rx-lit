@@ -15,7 +15,7 @@ export const subscribe = <K extends LitElement>(
 
   Object.defineProperty(targetPrototype, propertyKey, {
     get() {
-      if (!this.hasOwnProperty(NEW_PROP_NAME))
+      if (!Object.prototype.hasOwnProperty.call(this, NEW_PROP_NAME))
         smartSubscribe(NEW_PROP_NAME, stream, this);
 
       return this[NEW_PROP_NAME];
