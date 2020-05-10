@@ -7,7 +7,8 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "test": "karma start"
+    "test:ci": "karma start",
+    "test": "yarn build && karma start"
   },
   "author": "Adrian Faciu <adrian.faciu@gmail.com>",
   "license": "MIT",
