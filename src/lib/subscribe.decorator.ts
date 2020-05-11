@@ -3,6 +3,11 @@ import { Observable } from 'rxjs';
 import { RxLitElement } from './rx-lit.element';
 
 // TODO: Improve typing
+
+/**
+ * Subscribes to an observable, sets new values to the property of the class and schedules an update.
+ * @param stream$ Observable that will be subscribed to.
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const subscribe = (stream: Observable<any>) => <K extends RxLitElement>(
   targetPrototype: K,
