@@ -13,25 +13,23 @@ class DemoElement extends RxLitElement {
 window.customElements.define('demo-testing-element', DemoElement);
 
 describe('RxLitElement', () => {
+  let element: DemoElement;
+
+  beforeEach(async () => {
+    element = await fixture('<demo-testing-element></demo-testing-element>');
+  });
+
   it('can be initialized', async () => {
-    const element = await fixture(
-      '<demo-testing-element></demo-testing-element>'
-    );
     expect(element).to.be.ok;
   });
 
   it('can handle simple Observable', async () => {
-    const element = await fixture<DemoElement>(
-      '<demo-testing-element></demo-testing-element>'
-    );
     element.setupObservable(from([1]));
     expect(element.streamValues).equal(1);
   });
 
   it('can handle invalid input', async () => {
-    const element = await fixture<DemoElement>(
-      '<demo-testing-element></demo-testing-element>'
-    );
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(() => element.setupObservable(null!)).to.throw(
       'Invalid Observable!'
     );
@@ -41,9 +39,6 @@ describe('RxLitElement', () => {
   });
 
   it('will unsubscribe when destroyed', async () => {
-    const element = await fixture<DemoElement>(
-      '<demo-testing-element></demo-testing-element>'
-    );
     const stream$ = new Subject();
     element.setupObservable(stream$);
 
@@ -57,9 +52,6 @@ describe('RxLitElement', () => {
   });
 
   it('will unsubscribe when called with a different stream', async () => {
-    const element = await fixture<DemoElement>(
-      '<demo-testing-element></demo-testing-element>'
-    );
     const stream$ = new Subject();
     element.setupObservable(stream$);
 
@@ -73,9 +65,6 @@ describe('RxLitElement', () => {
   });
 
   it('will ignore calls with the same stream', async () => {
-    const element = await fixture<DemoElement>(
-      '<demo-testing-element></demo-testing-element>'
-    );
     const stream$ = new Subject();
     element.setupObservable(stream$);
 

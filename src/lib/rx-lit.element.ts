@@ -10,7 +10,7 @@ class ExistingSubscription {
   subscription?: Subscription;
 }
 
-export class RxLitElement extends LitElement {
+export abstract class RxLitElement extends LitElement {
   [unsubscribe] = new Subject();
   [subscriptions] = new Map<keyof this, ExistingSubscription>();
 
@@ -23,7 +23,7 @@ export class RxLitElement extends LitElement {
       else existingSubscription?.subscription?.unsubscribe();
     }
 
-    let subscription = stream$
+    const subscription = stream$
       .pipe(takeUntil(this[unsubscribe]))
       .subscribe((res) => {
         this[prop] = res;

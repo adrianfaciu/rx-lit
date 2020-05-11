@@ -1,31 +1,18 @@
-import { LitElement } from 'lit-element';
 import { Observable } from 'rxjs';
 
-import { smartSubscribe } from './smart-subscribe';
+import { RxLitElement } from './rx-lit.element';
 
-export const subscribe = <K extends LitElement>(
-  stream: Observable<unknown>
-) => (targetPrototype: K, propertyKey: string) => {
-  if (typeof targetPrototype === 'function')
-    throw new Error('Should not be used on static members!');
-
+// TODO: Improve typing
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const subscribe = (stream: Observable<any>) => <K extends RxLitElement>(
+  targetPrototype: K,
+  propertyKey: keyof K
+) => {
   if (!stream) throw new Error('Invalid stream!');
 
-  const NEW_PROP_NAME = Symbol(propertyKey);
-
-  Object.defineProperty(targetPrototype, propertyKey, {
-    get() {
-      if (!Object.prototype.hasOwnProperty.call(this, NEW_PROP_NAME))
-        smartSubscribe(NEW_PROP_NAME, stream, this);
-
-      return this[NEW_PROP_NAME];
-    },
-    set(value) {
-      if (this[NEW_PROP_NAME] === value) {
-        return;
-      }
-
-      this[NEW_PROP_NAME] = value;
-    },
-  });
+  const initial = targetPrototype.connectedCallback;
+  targetPrototype.connectedCallback = function () {
+    initial?.call(this);
+    this.subscribe(propertyKey, stream);
+  };
 };
