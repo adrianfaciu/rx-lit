@@ -65,7 +65,7 @@ Beside abstracting away some of the code, we have some other benefits:
 In some cases, we can use a decorator to simplify further. If the Observable we want to subscribe to is not a property of our class, we can simplify the code:
 
 ```typescript
-class DemoElement extends LitElement {
+class DemoElement extends RxLitElement {
   @subscribe(stream$)
   streamValues: number;
 

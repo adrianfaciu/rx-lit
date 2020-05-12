@@ -1,6 +1,6 @@
 {
   "name": "rx-lit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Base class for LitElement that makes working with Observables easier.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
