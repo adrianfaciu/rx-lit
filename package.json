@@ -1,11 +1,12 @@
 {
   "name": "rx-lit",
-  "version": "0.1.0",
-  "description": "Utilities to make working with Observables inside LitElement components a bit easier.",
+  "version": "1.0.0",
+  "description": "Base class for LitElement that makes working with Observables easier.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist && tsc",
+    "build:package": "yarn build && rimraf dist/**/*spec*",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test:ci": "karma start",
     "test": "yarn build && karma start"
