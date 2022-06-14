@@ -33,7 +33,7 @@
     "@typescript-eslint/parser": "^2.31.0",
     "deepmerge": "^4.2.2",
     "eslint": "^6.8.0",
-    "karma": "^5.0.5",
+    "karma": "^6.4.0",
     "lit-element": "^2.3.1",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.5",
